@@ -1,0 +1,143 @@
+1 -Crie um app
+2 -Crie o model
+3 -Registre seu app no settings do projeto
+4 -Faça a migration para o DB
+5 -Registre seu model criado para utilizar na interface de admin
+6 -Melhorando exibição dos posts na interface de admin
+7- Acessando os objetos do banco de dados
+8- Criando views
+9- Conectando a url com a view
+
+
+
+1- Por padrão, seu projeto vem com 6 apps instalados. O Django irá informar que existem migrations pendentes de apenas 4 deles, isso porque esses 4 apps lidam diretamente com a estrutura do banco de dados. Migrations são arquivos python que fazer a administração das tabelas no banco de dados.
+
+2 - Models:
+
+  Um model será uma classe python que irá herdar a classe model do django.
+   
+  Cada atributo da classe Model que criarmos irá ser um item na coluna de nosso banco de dados.
+   O Django fornece uma API para acessar os itens do banco de dados, conseguiremos fazer isso com ela.
+
+
+No banco de dados, teramos uma tabela somente com as informações do autor, nela estará contida o id do autor.  Em nossa tabela de posts, terá um campo que faz referencia à esse id para sabermos quem foi o autor que escreveu o post.
+
+3 - nome_do_app_criado.Nome_do_arquivo(apps).Nome_da_classe_criada
+    o nome da classe vai estar dentro do arquivo ''apss'' do app criado
+
+4- python manage.py makemigrations nome_do_app 
+Se quiser ver os comandos sql que serão executados durante a migração pelo Django faça: 
+  python manage.py sqlmigrate nome_do_app nome_do_arquivo_de_migration
+  ex:
+    python manage.py sqlmigrate blog 0001
+
+    O código sql que irá aparecer dependerá do banco que você está utilizando, a API do django já faz as alterações necessárias sozinha dependendo do parâmetro de configuração que você colocou no database
+
+   Se você quiser alterar algum campo no DB, remover, adicionar SEMPRE crie um arquivo de migration ''makemigrations'' e depois migre para o DB
+   
+5- no arquivo admin.py do app:
+  
+  Importe o model criado por você:
+    from .models import nome_da_classe_criada
+
+    admin.site.register(nome_da_classe_criada)
+
+6- No arquivo models, na classe que você criou faça:
+    def __str__(self):
+      return self.title
+
+   Caso queira exibir mais informações ainda, pode fazer assim:
+
+7- Todo model que criamos no django vem com um Manager(gerenciador) padrão que é chamado de object. São através desses managers que nossa aplicação interage com o banco de dados.
+
+
+    
+  variável = Post.objects.get(id=1)
+
+  Post é meu model (classe que criei), objects é meu manager e get é um método do objects. Acima peguei o objeto que tinha o id 1 e coloquei numa variável
+      
+
+  A partir daqui, posso acessar atributos que estavam na tabela do DB:
+
+  variavel.title  (exibe o título)
+  variavel.author (exibe o autor)
+  
+  e assim por diante.
+
+  Para mudar algo, você faria, por exemplo:
+
+  variavel.title = 'Novo título'
+
+  variavel.save (utilizando isso direto no terminal python)
+
+
+  Se quisesse os posts de somente um usuário, por exemplo, nós poderíamos filtrar:
+   Nome_da_classe.object.filter(author__username='nome_do_autor_aqui')
+
+
+8- Views são funções do python que recebem requests (requisições) e retorna um response (uma resposta). Ela pode retornar um html, um pdf, um arquivo do excel, imagens...etc.
+
+Existem duas maneiras de criar uma view.Nós podemos criar views usando funções ou usando classes. Uma não é melhor do que a outra, aprenda das duas maneiras e saiba trabalhar com as duas formas.
+
+Aqui vamos usar classes:
+
+Vamos usar as views genéricas: 
+  Usamos essas views para tarefas comuns, por exemplo ''Listar objetos, exibir detalhes de um objeto, editar, deletar''
+
+No arquivo views.py do app import as views genéricas:
+  from django.views.generic import DetailView, ListView
+
+  O listview serve para listar nossos posts
+  O detailview serve para mostrar um post só
+
+  Agora vamos criar nossas próprias classes que irão herdar essas classes importadas acima:
+
+9-  Dentro do app crie um arquivo urls.py:
+
+
+  from django.urls import path
+
+from . import views
+
+
+app_name = 'nome_do_app'
+
+urlpatterns = [ 
+    #Conectando a url sem argumentos com a PostListView do views
+    path('', views.PostListView.as_view(), name='list'),
+
+    #Conectando à um post quando passamos uma url que tem um slug como argumento
+    path('<slug:slug>/', views.PostDetailView.as_view(), name='detail'),
+    
+#Como estamos trabalhando com views baseadas em classes, precisamos chamar esse método .as_view(), ele irá receber a requisição web
+
+#O name é o que iremos usar para referenciar esses padrões acima
+
+
+]
+
+#Como eu tenho um app_name e tenho o name nos padrões, eu evito conflito com outros apss que poderiam, por exemplo, ter uma url com name 'list'' ou name 'detail'
+
+  
+
+
+
+Agora, no urls do PROJETO faça:
+
+  from django.urls import path, include
+
+  urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('nome_app/', include('nome_app.urls', namespace='nome_app'))
+]
+
+
+Ao tentar acessar uma página, talvez se depare com o seguinte erro:
+
+TemplateDoesNotExist at /blog/
+blog/post_list.html
+
+Como estamos usando views genéricas, uma das coisas que elas fazem é especificar um arquivo que irão utilizar como template. No caso, o post_list.html. Precisamos criar esse arquivo para acessar nossa lista de posts lá dentro de templates
+
+  
+
