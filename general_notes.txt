@@ -7,7 +7,7 @@
 7- Acessando os objetos do banco de dados
 8- Criando views
 9- Conectando a url com a view
-
+10- Criando ancoras clicáveis
 
 
 1- Por padrão, seu projeto vem com 6 apps instalados. O Django irá informar que existem migrations pendentes de apenas 4 deles, isso porque esses 4 apps lidam diretamente com a estrutura do banco de dados. Migrations são arquivos python que fazer a administração das tabelas no banco de dados.
@@ -140,4 +140,39 @@ blog/post_list.html
 Como estamos usando views genéricas, uma das coisas que elas fazem é especificar um arquivo que irão utilizar como template. No caso, o post_list.html. Precisamos criar esse arquivo para acessar nossa lista de posts lá dentro de templates
 
   
+ps: Pesquisar sobre template tag:
+  <title>{% block title %}{% endblock %}</title>
+  Template tag é o código python 
+  
+
+  A variável post_list te dá acesso à todos os posts, ela foi definida pelo Django quando você começou a usar uma view genérica
+
+  
+  Filtros:
+
+    
+      | linebreaks | truncatewords:10 }}
+
+      O truncatewords:10 está fazendo com que apenas 10 palavras do artigo sejam mostradas, pois estamos fazendo uma preview apenas, não queremos exibir todo o post.
+
+      O linebraks substitui a quebra de linha por código HTML (fiquei meio confuso)
+
+      
+
+      As views genéricas irão criar as variáveis baseadas no nome do model. No caso, criamos o model Post, logo, temos a post_list no post_list.html e a variável post no arquivo post_detail.
+
+ 
+10- No arquivo de models do app vamos fazer um import:
+
+  from django.urls import reverse
+  
+
+  defina um método 
+
+  def get_absolute_url(self):
+        return reverse('blog:detail', kwargs={'slug': self.slug})
+
+
+
+
 
