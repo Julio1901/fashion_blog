@@ -1,6 +1,7 @@
+
 {% extends 'blog/base.html' %}
 
-
+{% load static %}
 
 <!-- Aqui estou criando um bloco onde será inserido o nome do post no título da janela-->
 {% block title %} {{post.title}}{% endblock%}
@@ -11,6 +12,14 @@
   <p class='date'>
     Publicado em {{ post.created}} por {{ post.author}}
   </p>
+
+  {{post.photo}}
+ 
+
+  <img src="{% static '{{post.photo}}' %}">
+
+
+  <img src="{% static 'kali06.png' %}">
 
   {{ post.body | linebreaks }}
 {% endblock %}

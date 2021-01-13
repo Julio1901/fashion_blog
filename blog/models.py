@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 
 from django.urls import reverse
 
+from PIL import Image
+
+
 class Post(models.Model):
     
     title = models.CharField(max_length=255)
@@ -22,6 +25,8 @@ class Post(models.Model):
                     
                     #Note que esse não tem o add igual acima
     updated = models.DateTimeField(auto_now=True)
+
+    photo = models.ImageField(upload_to='static')
     
 
     #Essa meta está fazendo os posts serem exibidos do mais recente para o mais antigo
@@ -33,3 +38,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'slug': self.slug})
+
+
+

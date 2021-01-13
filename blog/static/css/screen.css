@@ -887,7 +887,6 @@ body.nav-opened .nav {
 }
 .grid-item .post img {
 	margin-bottom:-10px;
-  width: 300px;
 }
 .wrapgriditem {
 	padding:30px;
@@ -1890,7 +1889,7 @@ a.btn-more {
 	margin-right:2%;
 }
 .grid-item {
-	width:50.00%;
+	width:80.00%;
 }
 .entry-title-divider {
 	position:relative;
