@@ -26,7 +26,7 @@ class Post(models.Model):
                     #Note que esse não tem o add igual acima
     updated = models.DateTimeField(auto_now=True)
 
-    photo = models.ImageField(upload_to='static')
+    photo = models.ImageField(upload_to='media')
     
 
     #Essa meta está fazendo os posts serem exibidos do mais recente para o mais antigo

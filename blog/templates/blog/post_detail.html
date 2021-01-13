@@ -15,11 +15,8 @@
 
   {{post.photo}}
  
-
-  <img src="{% static '{{post.photo}}' %}">
-
-
-  <img src="{% static 'kali06.png' %}">
+  <h1>Imagem inserida através do banco de dados com Python</h1>
+  <img src="{{post.photo.url}}">
 
   {{ post.body | linebreaks }}
 {% endblock %}

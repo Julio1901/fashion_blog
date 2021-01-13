@@ -12,7 +12,7 @@ https://www.free-css.com/free-css-templates/page257/nectaria
 8- Criando views
 9- Conectando a url com a view
 10- Criando ancoras clicáveis
-
+11 - Inserir imagens e exibir no post
 
 1- Por padrão, seu projeto vem com 6 apps instalados. O Django irá informar que existem migrations pendentes de apenas 4 deles, isso porque esses 4 apps lidam diretamente com a estrutura do banco de dados. Migrations são arquivos python que fazer a administração das tabelas no banco de dados.
 
@@ -176,6 +176,51 @@ ps: Pesquisar sobre template tag:
   def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'slug': self.slug})
 
+
+
+
+
+11 - 
+
+  Exibindo imagens que estão no banco de dados:
+
+  https://www.youtube.com/watch?v=ejiNlrUzZI0
+
+  No settings crie essas variáveis:
+    MEDIA_URL = '/media/'
+
+
+
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+  No STATICFILES_DIRS: 
+
+    os.path.join(BASE_DIR, 'media')
+
+
+
+
+  No urls
+
+
+  from django.conf import settings
+  from django.conf.urls.static import static
+
+
+   
+urlpatterns = [
+    
+
+    PADRÕES AQUI
+
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+  No HTML : Cuidado, post.photo está assim seguindo o que você definiu on model
+
+  <img src="{{post.photo.url}}">
 
 
 

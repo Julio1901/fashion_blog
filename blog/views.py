@@ -1,5 +1,9 @@
 from django.views.generic import DetailView, ListView
 
+#test
+from django.http import HttpResponse
+
+
 
 from .models import Post
 
@@ -11,3 +15,7 @@ class PostListView(ListView):
 
 class PostDetalView(DetailView):
     model = Post
+
+
+
+
