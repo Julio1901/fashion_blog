@@ -225,3 +225,9 @@ urlpatterns = [
 
 
 
+
+
+
+Para voltar para a página anterior ao clicar numa ancora:
+
+<a href="javascript:history.back()">Something here</a>

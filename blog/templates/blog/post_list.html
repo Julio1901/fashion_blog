@@ -53,14 +53,14 @@
   {% for post in post_list %}
      <div class="grid-item">
 				<article class="post tag-romance">
-				<a href="article.html"><img src="{{post.photo.url}}"></a>
+          <a href="{{post.get_absolute_url}}"><img src="{{post.photo.url}}"></a>
 				<div class="wrapgriditem">
 					<header class="post-header">
-					<h2 class="post-title"><a href="article.html">{{post.title}}</a></h2>
+            <h2 class="post-title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
 					</header>
 					<section class="post-excerpt">
 					<p>
-            {{post.body}} <a class="read-more" href="article.html">&raquo;</a>
+          {{post.body}} <a class="read-more" href="{{post.get_absolute_url}}">&raquo;</a>
 					</p>
 					</section>
 					<footer class="post-meta">
