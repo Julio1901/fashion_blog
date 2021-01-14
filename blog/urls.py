@@ -8,7 +8,7 @@ app_name = 'blog'
 urlpatterns = [
     #Conectando a url sem argumentos com a PostListView do views
     path('', views.PostListView.as_view(), name='list'),
-
+    path('index.html', views.PostListView.as_view(), name='list'),
     #Conectando à um post quando passamos uma url que tem um slug como argumento
     path('<slug:slug>/', views.PostDetalView.as_view(), name='detail'),
     
@@ -16,6 +16,7 @@ urlpatterns = [
 
 #O name é o que iremos usar para referenciar esses padrões acima
 
+    path('author.html', views.author_page, name='author_page')
 
 ]
 
