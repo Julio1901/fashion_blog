@@ -11,13 +11,20 @@
 <link rel="shortcut icon" href="#">
 <link rel="stylesheet" type="text/css" href="{% static 'css/screen.css' %}"/>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic,700,700italic|Playfair+Display:400,700,400italic,700italic"/>
+
+<script>
+  //Limpa histórico da URL//
+  window.history.pushState("", "", "/");
+</script>
+
+
 </head>
 <body class="author-template">
 <div class="site-wrapper">
 	<nav class="main-nav overlay clearfix">
 	<a class="blog-logo" href="index.html"><img src="{% static 'img/logo.png' %}" alt="Fashion Critiques"/></a>
 	<ul id="menu">
-		<li class="nav-home nav-current" role="presentation"><a href="index.html">Home</a></li>
+		<li class="nav-home nav-current" role="presentation"><a href="/blog">Home</a></li>
 		<span class="socialheader">
 		<a href="#"><span class='symbol'>circletwitterbird</span></a>
 		<a href="#"><span class='symbol'>circlefacebook</span></a>

@@ -11,21 +11,27 @@
 <link rel="shortcut icon" href="#">
 <link rel="stylesheet" type="text/css" href="{% static 'css/screen.css' %}"/>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic,700,700italic|Playfair+Display:400,700,400italic,700italic"/>
+
+<script>
+  //Limpa histórico da URL//
+  window.history.pushState("", "", "/");
+</script>
+
 </head>
 <body class="post-template">
 <div class="site-wrapper">
 	<nav class="main-nav overlay clearfix">
     <a class="blog-logo" href="blog"><img src="{% static 'img/logo.png' %}" alt="Fashion Critiques"/></a>
 	<ul id="menu">
-    <li class="nav-home nav-current" role="presentation"><a href="javascript:history.back()">Home</a></li>
-		<li class="nav-author-page" role="presentation"><a href="author.html">Author Page</a></li>
+    <li class="nav-home nav-current" role="presentation"><a href="/blog">Home</a></li>
+    <li class="nav-author-page" role="presentation"><a href="blog/author.html">Author Page</a></li>
 		<span class="socialheader">
 		<a href="#"><span class='symbol'>circletwitterbird</span></a>
 		<a href="#"><span class='symbol'>circlefacebook</span></a>
 		<a href="#"><span class='symbol'>circlegoogleplus</span></a>
 		<a href="mailto:wowthemesnet@gmail.com"><span class='symbol'>circleemail</span></a>
 		</span>
-	</ul>
+    <></ul>
 	</nav>
   <header class="main-header post-head " style="background-image: url({{post.photo.url}})">
 	<div class="vertical">
