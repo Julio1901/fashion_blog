@@ -1,5 +1,3 @@
-
-
 {% load static %}
 
 <!DOCTYPE html>
@@ -16,18 +14,6 @@
 </head>
 <body class="home-template">
 <div class="site-wrapper">
-	<nav class="main-nav overlay clearfix">
-	<ul id="menu">
-		<li class="nav-home nav-current" role="presentation"><a href="index.html">Home</a></li>
-		<li class="nav-author-page" role="presentation"><a href="author.html">Author Page</a></li>
-		<span class="socialheader">
-		<a href="#"><span class='symbol'>circletwitterbird</span></a>
-		<a href="#"><span class='symbol'>circlefacebook</span></a>
-		<a href="#"><span class='symbol'>circlegoogleplus</span></a>
-		<a href="mailto:wowthemesnet@gmail.com"><span class='symbol'>circleemail</span></a>
-		</span>
-	</ul>
-	</nav>
 	<header class="main-header " style="background-image: url({% static 'img/home_back.jpeg' %})">
 	<div class="vertical">
 		<div class="main-header-content inner">
@@ -45,6 +31,19 @@
 		<img src="{% static '/img/shadow.png' %}" class="wrapshadow">
 		<div class="grid">
 
+    <header>       
+      <nav class="main-nav overlay clearfix">
+      <ul id="menu">
+        <li class="nav-home nav-current" role="presentation"><a href="index.html">Home</a></li>
+        <li class="nav-author-page" role="presentation"><a href="author.html">Author Page</a></li>
+        <span class="socialheader">
+        <a href="#"><span class='symbol'>circlefacebook</span></a>
+        <a href="#"><span class='symbol'>circlegoogleplus</span></a>
+        <a href="mailto:wowthemesnet@gmail.com"><span class='symbol'>circleemail</span></a>
+        </span>
+      </ul>
+      </nav>
+    </header>
 
 
   {% for post in post_list %}
@@ -90,7 +89,6 @@
 <script type="text/javascript" src="{% static '/js/index.js"></script>
 </body>
 </html>
-
 
 
 <!--Trabalhar para exibir apenas 4 posts na index e exibir todos quando clicar em ''see all-->

@@ -1,24 +1,25 @@
+
 {% load static %}
 
 
-<!DOCTYPE html>
+{% block content%}
 
-<html>
-  <heade>
-  <title>{% block title %}{% endblock %}</title>
-  
 
-  </heade>
- 
-  <body>
-    <header>
-      <h1>Meu blog</h1>
-    </header>
-    
-    <main>
-      {% block content %}
-      {% endblock %}
-    </main>
-  </body>
+<header>       
+	<nav class="main-nav overlay clearfix">
+	<ul id="menu">
+		<li class="nav-home nav-current" role="presentation"><a href="index.html">Home</a></li>
+		<li class="nav-author-page" role="presentation"><a href="author.html">Author Page</a></li>
+		<span class="socialheader">
+		<a href="#"><span class='symbol'>circletwitterbird</span></a>
+		<a href="#"><span class='symbol'>circlefacebook</span></a>
+		<a href="#"><span class='symbol'>circlegoogleplus</span></a>
+		<a href="mailto:wowthemesnet@gmail.com"><span class='symbol'>circleemail</span></a>
+		</span>
+	</ul>
+	</nav>
+</header>
 
-</html>
+
+{% endblock %}
+

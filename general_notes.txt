@@ -231,3 +231,10 @@ urlpatterns = [
 Para voltar para a página anterior ao clicar numa ancora:
 
 <a href="javascript:history.back()">Something here</a>
+
+
+
+
+Outra coisa boa que o Django tem para você é o template extending - extensão de templates. O que isso significa? Significa que você pode usar as mesmas partes do seu HTML em diferentes páginas do seu site.
+
+    https://tutorial.djangogirls.org/pt/template_extending/
